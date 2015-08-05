@@ -1,0 +1,7 @@
+.selector-pills {
+    background-color: skyblue;
+    display: inline-block;
+    padding : 5px 5px 5px 5px;
+    border: solid  1px #619BD4;
+    border-radius: 7px;
+}

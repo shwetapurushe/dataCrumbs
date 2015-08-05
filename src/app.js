@@ -4,7 +4,7 @@
 
 (function(){
 
-    angular.module('crumbs', []);
+    angular.module('crumbs', ['crumbs.selectorPills']);
 
     angular.module('crumbs').controller('mainController', crumbController);
 
