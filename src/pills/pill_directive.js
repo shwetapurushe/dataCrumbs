@@ -12,7 +12,8 @@
     function selectorPillComponent (){
         return {
             restrict : 'E',
-            template : '<div class = "selector-pills">{{p_Ctrl.label}}</div>',
+            template : '<div class = "selector-pills">{{p_Ctrl.name}}</div>' +
+            '<div id = "arrow"  ng-if="p_Ctrl.label"><i class="fa fa-chevron-circle-right"/></div>',
             controller : sPillController,
             controllerAs : 'p_Ctrl',
             bindToController : true,
@@ -25,6 +26,7 @@
     function sPillController (){
        var p_Ctrl = this;
 
-        p_Ctrl.label = "Shweta";
+        p_Ctrl.label = "j";
+        p_Ctrl.name = "Shweta";
     }
 })();
