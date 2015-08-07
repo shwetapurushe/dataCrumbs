@@ -9,24 +9,23 @@
     angular.module('crumbs.selectorPills').directive('selectorPills', selectorPillComponent);
 
     selectorPillComponent.$inject= [];
-    function selectorPillComponent (){
+    function selectorPillComponent () {
         return {
-            restrict : 'E',
-            template : '<div class = "selector-pills">{{p_Ctrl.name}}</div>' +
+            restrict: 'E',
+            template: '<div class = "selector-components">{{p_Ctrl.name}}</div>' +
             '<div id = "arrow"  ng-show="p_Ctrl.label"><i class="fa fa-chevron-circle-right"/></div>',
-            controller : sPillController,
-            controllerAs : 'p_Ctrl',
-            bindToController : true,
-            link : function(){
-
+            controller: sPillController,
+            controllerAs: 'p_Ctrl',
+            bindToController: true,
+            link: function (scope, elem, attrs) {
             }
         };//end of directive definition
     }
 
-    function sPillController (){
+    sPillController.$inject = ['$scope'];
+    function sPillController (scope){
        var p_Ctrl = this;
-
-        p_Ctrl.label = "";
+        p_Ctrl.label = "k";
         p_Ctrl.name = "Shweta";
     }
 })();

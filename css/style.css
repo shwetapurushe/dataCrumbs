@@ -1,4 +1,4 @@
-.selector-pills {
+.selector-components {
     display: inline-block;
     padding : 5px 5px 5px 5px;
     float:left;
@@ -11,7 +11,7 @@ selector-pills :hover {
     background-color: skyblue;
 }
 
-.pillsContainer{
+#pillsContainer{
     border: solid 2px #619BD4;
     display: inline-block;
     overflow-x : auto;
