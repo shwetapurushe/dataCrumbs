@@ -4,9 +4,9 @@
  * */
 
 (function (){
-    angular.module('crumbs.selectorPills', []);
+    //angular.module('crumbs.selectorPills', []);
 
-    angular.module('crumbs.selectorPills').directive('selectorPills', selectorPillComponent);
+    angular.module('crumbs').directive('selectorPills', selectorPillComponent);
 
     selectorPillComponent.$inject= [];
     function selectorPillComponent () {
@@ -25,7 +25,7 @@
     sPillController.$inject = ['$scope'];
     function sPillController (scope){
        var p_Ctrl = this;
-        p_Ctrl.label = "k";
+        p_Ctrl.label = "";
         p_Ctrl.name = "Shweta";
     }
 })();

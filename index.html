@@ -9,15 +9,16 @@
 </head>
 <body ng-controller="mainController as main">
 
-<div id = "pillsContainer">
-    <selector-pills ng-repeat = "a in main.logs"></selector-pills>
-</div>
+<div id="pillsContainer"></div>
+<button ng-click = "main.addComponent()">Add</button>
 
-<button ng-click = "main.add()">Add</button>
-<button ng-click = "main.sub()">Sub</button>
+<!--works with ng-repeat idea-->
+<!--<div id = "pillsContainer">-->
+    <!--<selector-pills ng-repeat = "a in main.logs"></selector-pills>-->
+<!--</div>-->
 
-<!--<selector-pills></selector-pills>-->
-<!--<pill-adder></pill-adder>-->
+<!--<button ng-click = "main.add()">Add</button>-->
+<!--<button ng-click = "main.sub()">Sub</button>-->
 
 <script src="bower_components/angular/angular.min.js"></script>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
