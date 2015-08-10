@@ -7,12 +7,17 @@
 
     angular.module('crumbs').controller('mainController', crumbController);
 
-    crumbController.$inject = ['$scope', '$compile'];
-    function crumbController (scope, $compile){
+    crumbController.$inject = ['$scope', '$compile', 'WeaveService'];
+    function crumbController (scope, $compile, WeaveService){
         var main = this;
         main.name = "Purushe";
+        main.WeaveService = WeaveService;
+
+        main.request_WeaveTree = request_weaveTree;
         main.addComponent = addComponent;
         main.add_ds_Crumb = add_ds_Crumb;
+
+        main.request_WeaveTree();
 
         function addComponent (){
             var compiledHtml = $compile("<selector-pills></selector-pills>")(scope);
@@ -24,6 +29,11 @@
         function add_ds_Crumb (){
             console.log("init the data source pill");
         };
+
+        function request_weaveTree (){
+            main.WeaveService.request_WeaveTree();
+        }
+
 
         //works with ng-repeat
         //scope.count = 10;
