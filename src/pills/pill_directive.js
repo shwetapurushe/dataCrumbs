@@ -13,7 +13,7 @@
         return {
             restrict: 'E',
             template: '<div class = "selector-components">{{p_Ctrl.w_node.currentLeaf}}</div>' +
-            '<div id = "arrow"  ng-show="p_Ctrl.w_node.has_Children"><i class="fa fa-chevron-circle-right"/></div>',
+            '<div id = "arrow"  ng-show="p_Ctrl.w_node.has_Children" ng-click="p_Ctrl.display_Options()"><i class="fa fa-chevron-circle-right"/></div>',
             controller: sPillController,
             controllerAs: 'p_Ctrl',
             bindToController: true,
@@ -22,10 +22,15 @@
         };//end of directive definition
     }
 
-    sPillController.$inject = ['$scope'];
-    function sPillController (scope){
+    sPillController.$inject = ['$scope', 'WeaveService'];
+    function sPillController (scope, WeaveService){
        var p_Ctrl = this;
+        p_Ctrl.WeaveService = WeaveService;
         p_Ctrl.w_node = scope.main.WeaveService.w_node;
+        p_Ctrl.display_Options = display_Options;
 
+        function display_Options(){
+            p_Ctrl.WeaveService.display_Options();
+        }
     }
 })();

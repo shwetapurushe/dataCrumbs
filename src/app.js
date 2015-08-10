@@ -12,21 +12,16 @@
         var main = this;
         main.name = "Purushe";
         main.WeaveService = WeaveService;
-        main.showUl = true;
+        main.WeaveService.showUl = false;
 
         main.request_WeaveTree = request_weaveTree;
         main.addComponent = addComponent;
         main.add_ds_Crumb = add_ds_Crumb;
-        main.display_Options = display_Options;
+       // main.display_Options = display_Options;
 
         //requesting the Weave root tree as soon as weave is ready
         main.request_WeaveTree();
 
-
-        function display_Options(){
-           // main.options = main.WeaveService.currentProvider;//set the provider
-            //main.showUl = true;
-        }
         function addComponent (){
             var compiledHtml = $compile("<selector-pills></selector-pills>")(scope);
 

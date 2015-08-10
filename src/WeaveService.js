@@ -12,13 +12,14 @@
 
         that.weave;
         that.weave_Tree;
+        that.showUl;
 
     //this structure represents each pill added in the hierarchy trail
     //its value changes depending on the latest addition to the trail
     //for eg. DataSources >> Tables >> Blah
         that.w_node = {
             currentLeaf:null,
-            has_Children : null,
+            has_Children : true,
             tree_node: null,
             current_childList:null
         };
@@ -27,6 +28,11 @@
         that.set_init_Crumb = function(){
             that.w_node.currentLeaf = "DataSources";
         };
+
+        that.display_Options = function(){
+            // main.options = main.WeaveService.currentProvider;//set the provider
+            that.showUl = true;
+        }
         /** requests the WeaveNodeTree hierarchy comprised of IWeaveTreeNode objects**/
         that.request_WeaveTree = function (){
             if(that.check_WeaveReady())//only if Weave is ready
