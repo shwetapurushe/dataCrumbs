@@ -10,12 +10,19 @@
     crumbController.$inject = ['$scope', '$compile'];
     function crumbController (scope, $compile){
         var main = this;
+        main.name = "Purushe";
         main.addComponent = addComponent;
+        main.add_ds_Crumb = add_ds_Crumb;
 
         function addComponent (){
             var compiledHtml = $compile("<selector-pills></selector-pills>")(scope);
 
             $("#pillsContainer").append(compiledHtml);
+        };
+
+        //this function add the datasource initial pill
+        function add_ds_Crumb (){
+            console.log("init the data source pill");
         };
 
         //works with ng-repeat

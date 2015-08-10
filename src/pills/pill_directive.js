@@ -25,7 +25,8 @@
     sPillController.$inject = ['$scope'];
     function sPillController (scope){
        var p_Ctrl = this;
-        p_Ctrl.label = "";
-        p_Ctrl.name = "Shweta";
+        p_Ctrl.name = scope.main.name;
+        p_Ctrl.label = "k";
+        //p_Ctrl.name = "Shweta";
     }
 })();
