@@ -35,7 +35,8 @@
 
         //this function add the data source initial pill
         function add_ds_Crumb (){
-           main.WeaveService.add_init_Crumb();
+           main.WeaveService.set_init_Crumb();//1. set the value of the current w_node
+           main.addComponent();//2. add it
         };
 
         function request_weaveTree (){

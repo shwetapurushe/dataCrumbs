@@ -12,8 +12,8 @@
     function selectorPillComponent () {
         return {
             restrict: 'E',
-            template: '<div class = "selector-components">{{p_Ctrl.name}}</div>' +
-            '<div id = "arrow"  ng-show="p_Ctrl.label" ng-click = "p_Ctrl.display_Options()"><i class="fa fa-chevron-circle-right"/></div>',
+            template: '<div class = "selector-components">{{p_Ctrl.w_node.currentLeaf}}</div>' +
+            '<div id = "arrow"  ng-show="p_Ctrl.label"><i class="fa fa-chevron-circle-right"/></div>',
             controller: sPillController,
             controllerAs: 'p_Ctrl',
             bindToController: true,
@@ -25,7 +25,7 @@
     sPillController.$inject = ['$scope'];
     function sPillController (scope){
        var p_Ctrl = this;
-        p_Ctrl.name = scope.main.name;
+        p_Ctrl.w_node = scope.main.WeaveService.w_node;
         p_Ctrl.label = "k";
         //p_Ctrl.name = "Shweta";
     }
