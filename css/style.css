@@ -1,6 +1,6 @@
 .sp_pills{
-    display: inline-block;
     min-width: 10%;
+    float:left
 }
 
 #flashContent{
@@ -42,5 +42,19 @@ selector-pills :hover {
     border: solid 2px #619BD4;
     padding : 5px 5px 5px 5px;
     margin : 5px 5px 5px 5px;
+}
 
+.searchC{
+    width : 95%;
+    padding : 5px 5px 5px 5px;
+    border-radius : 7px;
+    border: solid 2px #c81340;
+    min-height: 20px;
+}
+
+#searchFilter{
+    width : 90%;
+    padding : 5px 5px 5px 5px;
+    min-height: 15px;
+    border: none;
 }

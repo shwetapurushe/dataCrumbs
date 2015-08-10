@@ -13,7 +13,7 @@
         return {
             restrict: 'E',
             template: '<div class = "selector-components">{{p_Ctrl.w_node.currentLeaf}}</div>' +
-            '<div id = "arrow"  ng-show="p_Ctrl.label"><i class="fa fa-chevron-circle-right"/></div>',
+            '<div id = "arrow"  ng-show="p_Ctrl.w_node.has_Children"><i class="fa fa-chevron-circle-right"/></div>',
             controller: sPillController,
             controllerAs: 'p_Ctrl',
             bindToController: true,
@@ -26,7 +26,6 @@
     function sPillController (scope){
        var p_Ctrl = this;
         p_Ctrl.w_node = scope.main.WeaveService.w_node;
-        p_Ctrl.label = "k";
-        //p_Ctrl.name = "Shweta";
+
     }
 })();
