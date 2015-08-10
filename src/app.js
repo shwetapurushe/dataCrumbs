@@ -12,22 +12,30 @@
         var main = this;
         main.name = "Purushe";
         main.WeaveService = WeaveService;
+        main.showUl = true;
 
         main.request_WeaveTree = request_weaveTree;
         main.addComponent = addComponent;
         main.add_ds_Crumb = add_ds_Crumb;
+        main.display_Options = display_Options;
 
+        //requesting the Weave root tree as soon as weave is ready
         main.request_WeaveTree();
 
+
+        function display_Options(){
+           // main.options = main.WeaveService.currentProvider;//set the provider
+            //main.showUl = true;
+        }
         function addComponent (){
             var compiledHtml = $compile("<selector-pills></selector-pills>")(scope);
 
             $("#pillsContainer").append(compiledHtml);
         };
 
-        //this function add the datasource initial pill
+        //this function add the data source initial pill
         function add_ds_Crumb (){
-            console.log("init the data source pill");
+           main.WeaveService.add_init_Crumb();
         };
 
         function request_weaveTree (){
@@ -37,7 +45,7 @@
 
         //works with ng-repeat
         //scope.count = 10;
-        //main.logs = ['a', 's'];
+        main.logs = ['a', 's', 'j', 'l'];
         // main.add = function (){
         //    main.logs.push('c');
         //    console.log(main.logs);

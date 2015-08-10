@@ -13,10 +13,15 @@
         that.weave;
         that.weave_Tree;
 
-        //static function
+        that.currentLeaf;
+        that.currentProvider;
+
+        that.add_init_Crumb = function(){
+
+        };
         /** requests the WeaveNodeTree hierarchy comprised of IWeaveTreeNode objects**/
         that.request_WeaveTree = function (){
-            if(that.check_WeaveReady())
+            if(that.check_WeaveReady())//only if Weave is ready
             {
                 if(!that.weave_Tree){
                     that.weave_Tree = new that.weave.WeaveTreeNode();

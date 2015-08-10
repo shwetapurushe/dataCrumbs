@@ -13,7 +13,7 @@
         return {
             restrict: 'E',
             template: '<div class = "selector-components">{{p_Ctrl.name}}</div>' +
-            '<div id = "arrow"  ng-show="p_Ctrl.label"><i class="fa fa-chevron-circle-right"/></div>',
+            '<div id = "arrow"  ng-show="p_Ctrl.label" ng-click = "p_Ctrl.display_Options()"><i class="fa fa-chevron-circle-right"/></div>',
             controller: sPillController,
             controllerAs: 'p_Ctrl',
             bindToController: true,

@@ -1,8 +1,16 @@
+.sp_pills{
+    display: inline-block;
+    min-width: 10%;
+}
+
+#flashContent{
+    display: inline-block;
+}
+
 .selector-components {
     display: inline-block;
     padding : 5px 5px 5px 5px;
     float:left;
-    /*margin :;*/
     border: solid  1px #619BD4;
     /*border-top-left-radius : 7px;*/
     /*border-bottom-left-radius : 7px;*/
@@ -13,7 +21,7 @@ selector-pills :hover {
 
 #pillsContainer{
     border: solid 2px #619BD4;
-    display: inline-block;
+    /*display: inline-block;*/
     overflow-x : auto;
     width: 400px;
     min-height: 25px;
@@ -28,4 +36,11 @@ selector-pills :hover {
     border: solid  1px #619BD4;
     border-top-right-radius : 7px;
     border-bottom-right-radius: 7px;
+}
+
+#optionList{
+    border: solid 2px #619BD4;
+    padding : 5px 5px 5px 5px;
+    margin : 5px 5px 5px 5px;
+
 }

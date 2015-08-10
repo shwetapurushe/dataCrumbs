@@ -9,11 +9,20 @@
 </head>
 <body ng-controller="mainController as main">
 
-<div id="pillsContainer" ng-init="main.add_ds_Crumb()"></div>
-<button ng-click = "main.addComponent()">Add</button>
+<div class = "sp_pills">
+    <div id="pillsContainer" ng-init="main.add_ds_Crumb()"></div>
+    <div id ="optionList" ng-show="main.showUl">
+        <ul ng-repeat="opt in main.logs">
+            <li>{{opt}}</li>
+        </ul>
+    </div>
+    <button ng-click = "main.addComponent()">Add</button>
+</div>
 
 <!-- WEAVE -->
-<div id="flashContent"></div>
+<!--<div id="flashContent"></div>-->
+
+
 <!--works with ng-repeat idea-->
 <!--<div id = "pillsContainer">-->
 <!--<selector-pills ng-repeat = "a in main.logs"></selector-pills>-->
