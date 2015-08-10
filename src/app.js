@@ -41,7 +41,7 @@
 
         //works with ng-repeat
         //scope.count = 10;
-        main.logs = ['a', 'as', 'j', 'l', 'ss', 'sl'];
+        main.logs = ['asinine', 'about', 'jumbla', 'love', 'sssshweta', 'slop'];
         // main.add = function (){
         //    main.logs.push('c');
         //    console.log(main.logs);
