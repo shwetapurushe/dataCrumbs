@@ -15,7 +15,7 @@ selector-pills :hover {
     border: solid 2px #619BD4;
     display: inline-block;
     overflow-x : auto;
-    min-width: 400px;
+    width: 400px;
     min-height: 25px;
     padding : 5px 5px 5px 5px;
     margin : 5px 5px 5px 5px;
