@@ -12,8 +12,8 @@
     function selectorPillComponent () {
         return {
             restrict: 'E',
-            template: '<div class = "selector-components">{{p_Ctrl.w_node.currentLeaf}}</div>' +
-            '<div id = "arrow"  ng-show="p_Ctrl.w_node.has_Children" ng-click="p_Ctrl.display_Options()"><i class="fa fa-chevron-circle-right"/></div>',
+            template: '<div class = "selector-components" ng-click="p_Ctrl.display_Options()">{{p_Ctrl.w_node.currentLeaf}}' +
+            '<i id = "arrow" ng-show="p_Ctrl.w_node.has_Children" class="fa fa-chevron-circle-right"/></div>',
             controller: sPillController,
             controllerAs: 'p_Ctrl',
             bindToController: true,

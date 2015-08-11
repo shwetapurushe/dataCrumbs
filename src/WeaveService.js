@@ -3,7 +3,6 @@
  * this file helps in managing data retrieval from Weave
  * @ author shweta purushe
  */
-
 (function(){
     angular.module('crumbs').service('WeaveService', weaveService);
 
@@ -31,8 +30,8 @@
 
         that.display_Options = function(){
             // main.options = main.WeaveService.currentProvider;//set the provider
-            that.showUl = true;
-        }
+            that.showUl = !that.showUl;
+        };
         /** requests the WeaveNodeTree hierarchy comprised of IWeaveTreeNode objects**/
         that.request_WeaveTree = function (){
             if(that.check_WeaveReady())//only if Weave is ready
@@ -49,7 +48,6 @@
             }
         };
 
-        //static function
         that.check_WeaveReady = function(){
 
             if(!that.weave)
