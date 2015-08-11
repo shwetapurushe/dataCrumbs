@@ -1,3 +1,4 @@
+/* this class if for the parent div that contains the entire component*/
 .sp_pills{
     min-width: 10%;
     float:left
@@ -15,7 +16,8 @@
     border: solid  1px #c8c2c4;
     border-radius: 7px;
 }
-selector-pills :hover {
+
+.onHover {
     background-color: skyblue;
 }
 
@@ -31,7 +33,7 @@ selector-pills :hover {
 }
 
 #arrow {
-    padding : 0 0 0 5px;
+    padding : 7px 5px 5px 5px;
 }
 
 /* everything to do with the drop down options selector*/
