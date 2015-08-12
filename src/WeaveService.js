@@ -16,12 +16,12 @@
     //this structure represents each pill added in the hierarchy trail
     //its value changes depending on the latest addition to the trail
     //for eg. DataSources >> Tables >> Blah
-        that.w_node = {
-            currentLeaf:null,
-            has_Children : true,
-            tree_node: null,
-            current_childList:null
-        };
+    //    that.w_node = {
+    //        currentLeaf:null,
+    //        has_Children : true,
+    //        tree_node: null,
+    //        current_childList:null
+    //    };
 
 
         that.set_init_Crumb = function(){

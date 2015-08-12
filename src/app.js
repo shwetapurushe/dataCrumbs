@@ -19,6 +19,8 @@
         main.add_init_Crumb = add_init_Crumb;
         main.handle_Node_Selection = handle_Node_Selection;
 
+        main.weave_node = {};
+
         //requesting the Weave root tree as soon as weave is ready
         main.request_WeaveTree();
 
@@ -28,17 +30,17 @@
             //3. sibling list will be the previous pill's children
         }
 
-        function addComponent (){
-            var compiledHtml = $compile("<selector-pills></selector-pills>")(scope);
+        function addComponent (i_node){
+            main.weave_node = i_node;
+            var compiledHtml = $compile("<selector-pills input = 'main.weave_node'></selector-pills>")(scope);
 
             $("#pillsContainer").append(compiledHtml);
         }
 
-        //this function add the data source initial pill
+        //this function add the data source initial pill, done only once
         function add_init_Crumb (){
             if(main.WeaveService.request_WeaveTree()){
-                main.WeaveService.set_init_Crumb();//1. set the value of the current w_node
-                main.addComponent();//2. add it
+                main.addComponent(main.WeaveService.weave_Tree);//using root element
                 scope.$apply();
             }
             else{
