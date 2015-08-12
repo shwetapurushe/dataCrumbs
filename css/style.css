@@ -17,9 +17,13 @@
     border-radius: 7px;
 }
 
-.onHover {
+selector-pills :hover {
     background-color: skyblue;
 }
+
+/*.onHover {*/
+    /*background-color: skyblue;*/
+/*}*/
 
 #pillsContainer{
     border: solid 2px #619BD4;
@@ -33,7 +37,7 @@
 }
 
 #arrow {
-    padding : 7px 5px 5px 5px;
+    padding : 0 0 0 5px;
 }
 
 /* everything to do with the drop down options selector*/

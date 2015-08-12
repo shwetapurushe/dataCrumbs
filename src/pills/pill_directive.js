@@ -12,9 +12,8 @@
     function selectorPillComponent () {
         return {
             restrict: 'E',
-            template: '<div class = "selector-components" ng-class="{onHover: hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false" ng-click="p_Ctrl.display_Options()">' +
-            '{{p_Ctrl.w_node.currentLeaf}}</div>' +
-            '<i id = "arrow" ng-show="p_Ctrl.w_node.has_Children" class="fa fa-chevron-circle-right"/>',
+            template: '<div class = "selector-components" ng-click="p_Ctrl.display_Options()">' +
+            '{{p_Ctrl.w_node.currentLeaf}} <i id = "arrow" ng-show="p_Ctrl.w_node.has_Children" class="fa fa-chevron-circle-right"/></div>',
             controller: sPillController,
             controllerAs: 'p_Ctrl',
             bindToController: true,
