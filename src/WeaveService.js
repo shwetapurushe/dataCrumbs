@@ -25,7 +25,10 @@
 
 
         that.set_init_Crumb = function(){
-            that.w_node.currentLeaf = "DataSources";
+            that.w_node.currentLeaf = that.weave_Tree.getLabel();
+            that.w_node.has_Children = that.weave_Tree.isBranch();
+            that.w_node.current_childList = that.weave_Tree.getChildren();
+            console.log("wnnode", that.w_node);
         };
 
         that.display_Options = function(){
