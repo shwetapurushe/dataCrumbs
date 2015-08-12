@@ -24,25 +24,21 @@
     //        current_childList:null
     //    };
 
-
-        that.set_init_Crumb = function(){
-            that.w_node.currentLeaf = that.weave_Tree.getLabel();
-            that.w_node.has_Children = that.weave_Tree.isBranch();
-            that.w_node.current_childList = that.weave_Tree.getChildren();
-            console.log("wnnode", that.w_node);
-        };
-
         that.display_Options = function(input_node){
             that.showUl = !that.showUl;
             //set the provider
             if(that.showUl){
                 that.node_options =[];
-                var x = input_node.getChildren();
-                //that.node_options.push(x[0].getLabel());
-                //that.node_options.push("CSVDataSource");
-                //console.log(that.node_options);
-            }
+                var chi = input_node.tree_node.getChildren();
+                 for(var u =0; u < chi.length; u++){
+                     var node_obj = {};
+                     node_obj.label = chi[u].getLabel();
+                     node_obj.node = chi[u];
 
+                     that.node_options[u] = node_obj;
+                 }
+                input_node.current_childList = that.node_options;
+            }
         };
         /** requests the WeaveNodeTree hierarchy comprised of IWeaveTreeNode objects**/
         that.request_WeaveTree = function (){

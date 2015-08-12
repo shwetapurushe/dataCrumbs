@@ -17,10 +17,10 @@
             <i class="fa fa-search" style = "padding-left: 5px"></i>
         </div>
         <ul ng-repeat="opt in main.WeaveService.node_options| filter:searchText"><!--dynamically populated depending on the node selected-->
-            <li ng-click = "main.handle_Node_Selection(opt)">{{opt}}</li>
+            <li ng-click = "main.handle_Node_Selection(opt)">{{opt.label}}</li>
         </ul>
     </div>
-    <button ng-click = "main.addComponent()">Add</button>
+    <!--<button ng-click = "main.addComponent()">Add</button>-->
 </div>
 
 <!-- WEAVE -->

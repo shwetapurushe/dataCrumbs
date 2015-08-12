@@ -2,6 +2,7 @@
  * Created by Shweta on 8/5/15.
  * this component represents one ui crumb in the hierarchy
  * */
+var yy;
 (function (){
     //angular.module('crumbs.selectorPills', []);
 
@@ -15,7 +16,7 @@
                 input : '='
             },
             template: '<div class = "selector-components" ng-click="p_Ctrl.display_Options()">' +
-            '{{p_Ctrl.input.getLabel()}} <i id = "arrow" ng-show="p_Ctrl.input.hasChildBranches()" class="fa fa-chevron-circle-right"/></div>',
+            '{{p_Ctrl.current_node.leaf}} <i id = "arrow" ng-show="p_Ctrl.current_node.has_Children" class="fa fa-chevron-circle-right"/></div>',
             controller: sPillController,
             controllerAs: 'p_Ctrl',
             bindToController: true,
@@ -38,8 +39,15 @@
             current_childList:null
         };
 
+        p_Ctrl.current_node.leaf = p_Ctrl.input.getLabel();//name
+        p_Ctrl.current_node.has_Children = p_Ctrl.input.hasChildBranches();//boolean if it is has children
+        p_Ctrl.current_node.tree_node = p_Ctrl.input;//actual node
+        //child list is set in WeaveService.displayOptions
+
+        yy = p_Ctrl.current_node;
+
         function display_Options(){
-            p_Ctrl.WeaveService.display_Options(p_Ctrl.input);
+            p_Ctrl.WeaveService.display_Options(p_Ctrl.current_node);
         }
     }
 })();

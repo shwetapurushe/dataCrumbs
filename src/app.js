@@ -10,7 +10,7 @@
     crumbController.$inject = ['$scope', '$compile', 'WeaveService'];
     function crumbController (scope, $compile, WeaveService){
         var main = this;
-        main.name = "Purushe";
+
         main.WeaveService = WeaveService;
         main.WeaveService.showUl = false;
 
@@ -24,10 +24,10 @@
         //requesting the Weave root tree as soon as weave is ready
         main.request_WeaveTree();
 
-        function handle_Node_Selection (node){
+        function handle_Node_Selection (i_node){
             //1.add the node pill
-            //2. fetch its children
-            //3. sibling list will be the previous pill's children
+            main.addComponent(i_node.node);
+            main.WeaveService.showUl = !main.WeaveService.showUl;//close options display
         }
 
         function addComponent (i_node){
@@ -37,7 +37,7 @@
             $("#pillsContainer").append(compiledHtml);
         }
 
-        //this function add the data source initial pill, done only once
+        //this function adds the data source initial pill, done only once as soon as weave loads
         function add_init_Crumb (){
             if(main.WeaveService.request_WeaveTree()){
                 main.addComponent(main.WeaveService.weave_Tree);//using root element
