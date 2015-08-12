@@ -14,16 +14,6 @@
         that.node_options;
         that.showUl;
 
-    //this structure represents each pill added in the hierarchy trail
-    //its value changes depending on the latest addition to the trail
-    //for eg. DataSources >> Tables >> Blah
-    //    that.w_node = {
-    //        currentLeaf:null,
-    //        has_Children : true,
-    //        tree_node: null,
-    //        current_childList:null
-    //    };
-
         that.display_Options = function(input_node){
             that.showUl = !that.showUl;
             //set the provider

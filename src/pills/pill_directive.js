@@ -2,7 +2,6 @@
  * Created by Shweta on 8/5/15.
  * this component represents one ui crumb in the hierarchy
  * */
-var yy;
 (function (){
     //angular.module('crumbs.selectorPills', []);
 
@@ -33,18 +32,16 @@ var yy;
         p_Ctrl.display_Options = display_Options;
 
         p_Ctrl.current_node = {
-            leaf:null,
-            has_Children : true,
-            tree_node: null,
-            current_childList:null
+            leaf:null,//name
+            has_Children : null,//boolean if it is has children
+            tree_node: null,//actual weave node
+            current_childList:null// list of children nodes
         };
 
-        p_Ctrl.current_node.leaf = p_Ctrl.input.getLabel();//name
-        p_Ctrl.current_node.has_Children = p_Ctrl.input.hasChildBranches();//boolean if it is has children
-        p_Ctrl.current_node.tree_node = p_Ctrl.input;//actual node
+        p_Ctrl.current_node.leaf = p_Ctrl.input.getLabel();
+        p_Ctrl.current_node.has_Children = p_Ctrl.input.hasChildBranches();
+        p_Ctrl.current_node.tree_node = p_Ctrl.input;
         //child list is set in WeaveService.displayOptions
-
-        yy = p_Ctrl.current_node;
 
         function display_Options(){
             p_Ctrl.WeaveService.display_Options(p_Ctrl.current_node);

@@ -43,16 +43,13 @@
                 main.addComponent(main.WeaveService.weave_Tree);//using root element
                 scope.$apply();
             }
-            else{
+            else
                 setTimeout(main.add_init_Crumb, 100);
-            }
-
         }
 
         function request_weaveTree (){
             main.WeaveService.request_WeaveTree();
         }
-
 
         //works with ng-repeat
         //scope.count = 10;
