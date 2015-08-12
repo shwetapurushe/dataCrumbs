@@ -11,6 +11,7 @@
 
         that.weave;
         that.weave_Tree;
+        that.node_options;
         that.showUl;
 
     //this structure represents each pill added in the hierarchy trail
@@ -31,9 +32,17 @@
             console.log("wnnode", that.w_node);
         };
 
-        that.display_Options = function(){
-            // main.options = main.WeaveService.currentProvider;//set the provider
+        that.display_Options = function(input_node){
             that.showUl = !that.showUl;
+            //set the provider
+            if(that.showUl){
+                that.node_options =[];
+                var x = input_node.getChildren();
+                //that.node_options.push(x[0].getLabel());
+                //that.node_options.push("CSVDataSource");
+                //console.log(that.node_options);
+            }
+
         };
         /** requests the WeaveNodeTree hierarchy comprised of IWeaveTreeNode objects**/
         that.request_WeaveTree = function (){

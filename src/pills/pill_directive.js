@@ -20,6 +20,7 @@
             controllerAs: 'p_Ctrl',
             bindToController: true,
             link: function (scope, elem, attrs) {
+
             }
         };//end of directive definition
     }
@@ -38,7 +39,7 @@
         };
 
         function display_Options(){
-            p_Ctrl.WeaveService.display_Options();
+            p_Ctrl.WeaveService.display_Options(p_Ctrl.input);
         }
     }
 })();
