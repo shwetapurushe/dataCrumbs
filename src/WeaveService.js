@@ -16,22 +16,28 @@
         that.showUl;
 
         that.display_Options = function(input_node){
+            var weaveTreeIsBusy = that.weave.evaluateExpression(null, '() => WeaveAPI.SessionManager.linkableObjectIsBusy(WEAVE_TREE_NODE_LOOKUP[0])');
             that.showUl = !that.showUl;
             //set the provider
             if(that.showUl){
                 that.node_options =[];
 
-                usSpinnerService.spin('dataLoadSpinner');//start the spinner
-
+                //usSpinnerService.spin('dataLoadSpinner');//start the spinner
                 var chi = input_node.tree_node.getChildren();//array of children nodes
-                 for(var u =0; u < chi.length; u++){
-                     var node_obj = {};
-                         node_obj.label = chi[u].getLabel();
-                     node_obj.node = chi[u];
+                (function fetching_Children(){
+                   if(weaveTreeIsBusy())
+                       setTimeout(fetching_Children, 500)
+                    else{
+                       for(var u =0; u < chi.length; u++){
+                           var node_obj = {};
+                           node_obj.label = chi[u].getLabel();
+                           node_obj.node = chi[u];
 
-                     that.node_options[u] = node_obj;
-                 }
-                usSpinnerService.stop('dataLoadSpinner');
+                           that.node_options[u] = node_obj;
+                       }
+                   }
+                }(input_node));
+               // usSpinnerService.stop('dataLoadSpinner');//stops the spinner
                 input_node.current_childList = that.node_options;
             }
         };
