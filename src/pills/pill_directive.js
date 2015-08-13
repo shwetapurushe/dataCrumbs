@@ -39,7 +39,7 @@
         };
 
         p_Ctrl.current_node.leaf = p_Ctrl.input.getLabel();
-        p_Ctrl.current_node.has_Children = p_Ctrl.input.hasChildBranches();
+        p_Ctrl.current_node.has_Children = p_Ctrl.input.isBranch();
         p_Ctrl.current_node.tree_node = p_Ctrl.input;
         //child list is set in WeaveService.displayOptions
 
