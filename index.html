@@ -8,7 +8,7 @@
     <link href="css/font-awesome.css" rel="stylesheet"/>
 </head>
 <body ng-controller="mainController as main">
-
+<span us-spinner spinner-key = "dataLoadSpinner"></span>
 <div class = "sp_pills">
     <div id="pillsContainer" ng-init="main.add_init_Crumb()"></div>
     <div id ="optionList" ng-show="main.WeaveService.showUl">
@@ -37,6 +37,8 @@
 
 <script src="bower_components/angular/angular.min.js"></script>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/angular-spinner/angular-spinner.js"></script>
+<script src="bower_components/spin.js/spin.js"></script>
 <script src="src/app.js"></script>
 <script src="src/WeaveService.js"></script>
 <script src="src/pills/pill_directive.js"></script>

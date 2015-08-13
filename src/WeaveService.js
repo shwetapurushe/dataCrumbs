@@ -6,7 +6,8 @@
 (function(){
     angular.module('crumbs').service('WeaveService', weaveService);
 
-    function weaveService (){
+    weaveService.$inject = ['usSpinnerService'];
+    function weaveService (usSpinnerService){
         var that = this;
 
         that.weave;
@@ -19,14 +20,18 @@
             //set the provider
             if(that.showUl){
                 that.node_options =[];
-                var chi = input_node.tree_node.getChildren();
+
+                usSpinnerService.spin('dataLoadSpinner');//start the spinner
+
+                var chi = input_node.tree_node.getChildren();//array of children nodes
                  for(var u =0; u < chi.length; u++){
                      var node_obj = {};
-                     node_obj.label = chi[u].getLabel();
+                         node_obj.label = chi[u].getLabel();
                      node_obj.node = chi[u];
 
                      that.node_options[u] = node_obj;
                  }
+                usSpinnerService.stop('dataLoadSpinner');
                 input_node.current_childList = that.node_options;
             }
         };

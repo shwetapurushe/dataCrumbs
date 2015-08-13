@@ -43,9 +43,11 @@ selector-pills :hover {
 /* everything to do with the drop down options selector*/
 #optionList{
     border: solid 2px #619BD4;
+    max-height : 500px;
     border-radius : 7px;
     padding : 5px 5px 5px 5px;
     margin : 0 5px 5px 5px;
+    overflow-y : scroll;
 }
 ul{
     list-style-type: none;

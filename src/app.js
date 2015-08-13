@@ -3,7 +3,7 @@
  */
 (function(){
 
-    angular.module('crumbs', []);
+    angular.module('crumbs', ['angularSpinner']);
 
     angular.module('crumbs').controller('mainController', crumbController);
 
