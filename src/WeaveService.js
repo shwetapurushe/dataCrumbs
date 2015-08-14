@@ -22,10 +22,8 @@
             if(that.showUl){
                 if(input_node.current_childList && input_node.current_childList.length > 1){
                     that.node_options = input_node.current_childList;//set the provider
-                    //console.log("using old list of children");
                 }
                 else{
-                    //console.log("fetching new list of children");
                     usSpinnerService.spin('dataLoadSpinner');//start the spinner
 
                     that.node_options =[];
@@ -43,11 +41,7 @@
                                 if(weaveTreeIsBusy())
                                     setTimeout(fetching_Children, 300);
                                 node_obj.label = chi[u].getLabel();
-                                //BAD SOLUTION #2
-                                //if(node_obj.label == '...'){
-                                //    fetching_Children();
-                                //    break;
-                                //}
+
                                 node_obj.node = chi[u];
 
                                 tempProvider[u] = node_obj;
