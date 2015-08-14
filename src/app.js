@@ -53,15 +53,16 @@
 
         //works with ng-repeat
         //scope.count = 10;
-        main.logs = ['asinine', 'about', 'jumbla', 'love', 'sssshweta', 'slop'];
-        // main.add = function (){
-        //    main.logs.push('c');
-        //    console.log(main.logs);
-        //};
-        //main.sub = function (){
-        //    main.logs.pop();
-        //    console.log(main.logs);
-        //};
+        main.logs = [{name : 'a', kite: 4}, {name : 'shweta', kite: 8}];
+        //main.logs = ['asinine', 'about', 'jumbla', 'love', 'sssshweta', 'slop'];
+         main.add = function (){
+            main.logs.push({name: 'c', kite : 9});
+            console.log(main.logs);
+        };
+        main.sub = function (){
+            main.logs.pop();
+            console.log(main.logs);
+        };
     }
 
 })();
