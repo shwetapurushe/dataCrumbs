@@ -6,8 +6,8 @@
 (function(){
     angular.module('crumbs').service('WeaveService', weaveService);
 
-    weaveService.$inject = ['usSpinnerService'];
-    function weaveService (usSpinnerService){
+    weaveService.$inject = ['usSpinnerService','$timeout'];
+    function weaveService (usSpinnerService, $timeout){
         var that = this;
 
         that.weave;
@@ -18,30 +18,52 @@
         that.display_Options = function(input_node){
             var weaveTreeIsBusy = that.weave.evaluateExpression(null, '() => WeaveAPI.SessionManager.linkableObjectIsBusy(WEAVE_TREE_NODE_LOOKUP[0])');
             that.showUl = !that.showUl;
-            //set the provider
+
             if(that.showUl){
-                that.node_options =[];
+                if(input_node.current_childList && input_node.current_childList.length > 1){
+                    that.node_options = input_node.current_childList;//set the provider
+                    //console.log("using old list of children");
+                }
+                else{
+                    //console.log("fetching new list of children");
+                    usSpinnerService.spin('dataLoadSpinner');//start the spinner
 
-                var chi = input_node.tree_node.getChildren();//array of children nodes
+                    that.node_options =[];
+                    (function fetching_Children(){
+                        var chi = input_node.tree_node.getChildren();//array of children nodes
+                        if(weaveTreeIsBusy())
+                            setTimeout(fetching_Children, 300);
+                        else{
+                            var tempProvider =[];
 
-                //usSpinnerService.spin('dataLoadSpinner');//start the spinner
-                (function fetching_Children(){
-                   if(weaveTreeIsBusy())
-                       setTimeout(fetching_Children, 500)
-                    else{
-                       for(var u =0; u < chi.length; u++){
-                           var node_obj = {};
-                           node_obj.label = chi[u].getLabel();
-                           node_obj.node = chi[u];
+                            for(var u =0; u < chi.length; u++){
+                                var node_obj = {};
+                                node_obj.label = chi[u].getLabel();
 
-                           that.node_options[u] = node_obj;
-                       }
-                    // usSpinnerService.stop('dataLoadSpinner');//stops the spinner
-                   }
-                }(input_node));
-                input_node.current_childList = that.node_options;
-            }
+                                if(weaveTreeIsBusy())
+                                    setTimeout(fetching_Children, 300);
+                                node_obj.label = chi[u].getLabel();
+                                //BAD SOLUTION #2
+                                //if(node_obj.label == '...'){
+                                //    fetching_Children();
+                                //    break;
+                                //}
+                                node_obj.node = chi[u];
+
+                                tempProvider[u] = node_obj;
+                            }
+                            $timeout(function(){
+                                that.node_options = tempProvider;
+                                input_node.current_childList = that.node_options;//set the provider
+                                usSpinnerService.stop('dataLoadSpinner');//stops the spinner
+                            }, 300);
+
+                        }
+                    }(input_node));//end of fetching children
+                }// end of fetching list condition
+            }//end of showUl boolean
         };
+
         /** requests the WeaveNodeTree hierarchy comprised of IWeaveTreeNode objects**/
         that.request_WeaveTree = function (){
             if(that.check_WeaveReady())//only if Weave is ready
@@ -58,6 +80,7 @@
             }
         };
 
+        /** checks if the Weave software has loaded**/
         that.check_WeaveReady = function(){
 
             if(!that.weave)
