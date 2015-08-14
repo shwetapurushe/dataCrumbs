@@ -41,7 +41,7 @@
         function add_init_Crumb (){
             if(main.WeaveService.request_WeaveTree()){
                 main.addComponent(main.WeaveService.weave_Tree);//using root element
-                scope.$apply();
+                scope.$apply();//because digest completes by the time the tree root is fetched
             }
             else
                 setTimeout(main.add_init_Crumb, 100);

@@ -22,8 +22,9 @@
             if(that.showUl){
                 that.node_options =[];
 
-                //usSpinnerService.spin('dataLoadSpinner');//start the spinner
                 var chi = input_node.tree_node.getChildren();//array of children nodes
+
+                //usSpinnerService.spin('dataLoadSpinner');//start the spinner
                 (function fetching_Children(){
                    if(weaveTreeIsBusy())
                        setTimeout(fetching_Children, 500)
@@ -35,9 +36,9 @@
 
                            that.node_options[u] = node_obj;
                        }
+                    // usSpinnerService.stop('dataLoadSpinner');//stops the spinner
                    }
                 }(input_node));
-               // usSpinnerService.stop('dataLoadSpinner');//stops the spinner
                 input_node.current_childList = that.node_options;
             }
         };
