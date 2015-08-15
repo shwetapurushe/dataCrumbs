@@ -4,19 +4,16 @@
 <span us-spinner spinner-key = "dataLoadSpinner"></span>
 
 <div class = "sp_pills">
-    <div id="pillsContainer">
-        <div ng-repeat = "a in main.logs">
-
-            <selector-pills input = "a"></selector-pills>
-        </div>
+    <div id="pillsContainer" ng-init = "main.add_init_Crumb()">
+            <selector-pills  ng-repeat = "a in main.crumbTrail" input = "a"></selector-pills>
     </div>
-    <!--<div id ="optionList" ng-show="main.WeaveService.showUl">-->
+    <!--<div id ="optionList">-->
     <!--<div class="searchC">-->
     <!--<input id = "searchFilter" ng-model = "searchText"/>-->
     <!--<i class="fa fa-search" style = "padding-left: 5px"></i>-->
     <!--</div>-->
-    <!--<ul ng-repeat="opt in main.WeaveService.node_options| filter:searchText">&lt;!&ndash;dynamically populated depending on the node selected&ndash;&gt;-->
-    <!--<li ng-click = "main.handle_Node_Selection(opt)">{{opt.label}}</li>-->
+    <!--<ul ng-repeat="opt in main.list| filter:searchText">&lt;!&ndash;dynamically populated depending on the node selected&ndash;&gt;-->
+    <!--<li>{{opt}}</li>-->
     <!--</ul>-->
     <!--</div>-->
 
@@ -25,7 +22,7 @@
 </div>
 
 <!-- WEAVE -->
-<!--<div id="flashContent"></div>-->
+<div id="flashContent"></div>
 
 <script src="bower_components/angular/angular.min.js"></script>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>

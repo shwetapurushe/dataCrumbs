@@ -14,7 +14,7 @@
             scope :{
                 input : '='
             },
-            template: '<div class = "selector-components">{{p_Ctrl.input.kite}} <i id = "arrow" class="fa fa-chevron-circle-right"/></div>',
+            template: '<div class = "selector-components">{{p_Ctrl.current_node.leaf}} <i id = "arrow" class="fa fa-chevron-circle-right"/></div>',
             controller: sPillController,
             controllerAs: 'p_Ctrl',
             bindToController: true,
@@ -28,6 +28,18 @@
     function sPillController (scope, WeaveService){
        var p_Ctrl = this;
         p_Ctrl.WeaveService = WeaveService;
+
+        p_Ctrl.current_node = {
+            leaf:null,//name
+            has_Children : null,//boolean if it is has children
+            tree_node: null,//actual weave node
+            current_childList:null// list of children nodes
+        };
+
+        p_Ctrl.current_node.leaf = p_Ctrl.input.getLabel();
+        p_Ctrl.current_node.has_Children = p_Ctrl.input.isBranch();
+        p_Ctrl.current_node.tree_node = p_Ctrl.input;
+        //child list is set in WeaveService.displayOptions
 
     }
 })();
