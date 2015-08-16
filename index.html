@@ -5,20 +5,20 @@
 
 <div class = "sp_pills">
     <div id="pillsContainer" ng-init = "main.add_init_Crumb()">
-            <selector-pills  ng-repeat = "a in main.crumbTrail" input = "a"></selector-pills>
+            <selector-pills  ng-repeat = "a in main.crumbTrail" input = "a.w_node" pnode = "a.p_node"></selector-pills>
     </div>
-    <!--<div id ="optionList">-->
-    <!--<div class="searchC">-->
-    <!--<input id = "searchFilter" ng-model = "searchText"/>-->
-    <!--<i class="fa fa-search" style = "padding-left: 5px"></i>-->
-    <!--</div>-->
-    <!--<ul ng-repeat="opt in main.list| filter:searchText">&lt;!&ndash;dynamically populated depending on the node selected&ndash;&gt;-->
-    <!--<li>{{opt}}</li>-->
-    <!--</ul>-->
-    <!--</div>-->
+    <div id ="optionList" ng-show="main.WeaveService.showUl">
+    <div class="searchC">
+    <input id = "searchFilter" ng-model = "searchText"/>
+    <i class="fa fa-search" style = "padding-left: 5px"></i>
+    </div>
+    <ul ng-repeat="opt in main.WeaveService.node_options| filter:searchText"><!--dynamically populated depending on the node selected-->
+    <li>{{opt.label}}</li>
+    </ul>
+    </div>
 
-    <button ng-click = "main.add()">Add</button>
-    <button ng-click = "main.sub()">Sub</button>
+    <!--<button ng-click = "main.add()">Add</button>-->
+    <!--<button ng-click = "main.sub()">Sub</button>-->
 </div>
 
 <!-- WEAVE -->

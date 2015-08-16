@@ -15,7 +15,7 @@
         main.WeaveService.showUl = false;
 
         main.request_WeaveTree = request_weaveTree;
-        main.addCrumb = addCrumb;
+        main.manage_Crumbs = manage_Crumbs;
         main.add_init_Crumb = add_init_Crumb;
         main.handle_Node_Selection = handle_Node_Selection;
 
@@ -28,13 +28,13 @@
 
         function handle_Node_Selection (i_node){
             //1.add the node pill
-            main.addCrumb(i_node.node);
+            main.manage_Crumbs(i_node.node);
             main.WeaveService.showUl = !main.WeaveService.showUl;//close options display
         }
 
-        function addCrumb(i_node){
+        function manage_Crumbs(i_node){
             if(i_node){
-                var label = i_node.getLabel();
+                var label = i_node.w_node.getLabel();
                 if($.inArray(label, main.crumbLog) == -1){//if it hasnt been added before
                     main.crumbTrail.push(i_node);
                     main.crumbLog.push(label);
@@ -49,13 +49,16 @@
         function add_init_Crumb (){
             if(main.WeaveService.request_WeaveTree()){
                 var ds = main.WeaveService.weave_Tree.getChildren();
-                var init_node = ds[0];
 
-                main.addCrumb(init_node);//using root element
+                var init_node = {};
+                init_node.w_node= ds[0];//starting with the WeaveDataSource Pill
+                init_node.p_node = main.WeaveService.weave_Tree;
+
+                main.manage_Crumbs(init_node);
                 scope.$apply();//because digest completes by the time the tree root is fetched
             }
             else
-                setTimeout(main.add_init_Crumb, 100);
+                setTimeout(main.add_init_Crumb, 300);
         }
 
         function request_weaveTree (){
@@ -63,7 +66,7 @@
         }
 
         //works with ng-repeat
-        //main.logs = [{name : 'a', kite: 99}, {name : 'shweta', kite: 80}];
+        main.logs = [{name : 'a', kite: 99}, {name : 'shweta', kite: 80}];
         main.list = ['asinine', 'about', 'jumbla', 'love', 'sssshweta', 'slop'];
 
     }

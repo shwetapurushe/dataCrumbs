@@ -12,9 +12,10 @@
     display: inline-block;
     padding : 5px 5px 5px 5px;
     float:left;
-    margin: 0 0 0 2px;
+    margin: 0 0 0 3px;
     border: solid  1px #c8c2c4;
-    border-radius: 7px;
+    border-bottom-left-radius: 7px;
+    border-top-left-radius: 7px;
 }
 
 selector-pills :hover {
@@ -37,7 +38,12 @@ selector-pills :hover {
 }
 
 #arrow {
-    padding : 0 0 0 5px;
+    display: inline-block;
+    padding : 5px 5px 5px 5px;
+    float:left;
+    border: solid  1px #c8c2c4;
+    border-top-right-radius : 7px;
+    border-bottom-right-radius: 7px;
 }
 
 /* everything to do with the drop down options selector*/
