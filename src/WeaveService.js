@@ -22,8 +22,9 @@
 
             if(that.showUl){
                 if(getChildren){//when request is for children
-                    if(input_node.children && input_node.children.length > 1){//use list if already there
+                    if(input_node.children && input_node.children.length){//use list if already there
                         that.node_options = input_node.children;//set the provider
+                        console.log("using cached list");
                     }
 
                     else{//make fresh request
@@ -32,12 +33,14 @@
 
                         chi = input_node.tree_node.getChildren();//array of children nodes //use node
                         fetching_Children(input_node, getChildren);//use node
+                        console.log("fetching new list");
                     }
                 }
 
                 else{//when request is for siblings
-                    if(input_node.siblings && input_node.siblings.length > 1){//use if list is already there
+                    if(input_node.siblings && input_node.siblings.length){//use if list is already there
                         that.node_options = input_node.siblings;//set the provider
+                        console.log("using cached list");
                     }
 
                     else{//make fresh request
@@ -46,6 +49,7 @@
 
                         chi = input_node.p_node.getChildren(); //use node's parent node
                         fetching_Children(input_node, getChildren);
+                        console.log("fetching new list");
                     }
                 }
 
@@ -65,9 +69,7 @@
                         if(weaveTreeIsBusy())
                             setTimeout(function(){fetching_Children (i_node, getChildren);}, 300);
                         node_obj.label = chi[u].getLabel();
-
                         node_obj.node = chi[u];
-
                         tempProvider[u] = node_obj;
                     }
                     $timeout(function(){
