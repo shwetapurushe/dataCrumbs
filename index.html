@@ -17,7 +17,7 @@
             <i class="fa fa-search" style = "padding-left: 5px"></i>
         </div>
         <ul ng-repeat="opt in main.WeaveService.node_options| filter:searchText"><!--dynamically populated depending on the node selected-->
-            <li ng-click = "main.manage_Crumbs(opt)">{{opt.label}}</li>
+            <li ng-click = "main.manage_Crumbs(opt)">{{opt.w_node.getLabel()}}</li>
         </ul>
     </div>
 

@@ -18,7 +18,6 @@
         that.display_Options = function(input_node, getChildren){
             var weaveTreeIsBusy = that.weave.evaluateExpression(null, '() => WeaveAPI.SessionManager.linkableObjectIsBusy(WEAVE_TREE_NODE_LOOKUP[0])');
             that.showUl = !that.showUl;
-            var chi;
 
             if(that.showUl){
                 if(getChildren){//when request is for children
@@ -29,9 +28,7 @@
 
                     else{//make fresh request
                         that.node_options = [];//clear
-                        usSpinnerService.spin('dataLoadSpinner');//start the spinner
-
-                        chi = input_node.tree_node.getChildren();//array of children nodes //use node
+                        usSpinnerService.spin('dataLoadSpinner');// start the spinner
                         fetching_Children(input_node, getChildren);//use node
                         console.log("fetching new list");
                     }
@@ -46,8 +43,6 @@
                     else{//make fresh request
                         that.node_options = [];//clear
                         usSpinnerService.spin('dataLoadSpinner');// start the spinner
-
-                        chi = input_node.p_node.getChildren(); //use node's parent node
                         fetching_Children(input_node, getChildren);
                         console.log("fetching new list");
                     }
@@ -57,6 +52,12 @@
 
 
             function fetching_Children(i_node, getChildren){
+                var chi;
+                if(getChildren)
+                    chi = input_node.tree_node.getChildren();//array of children nodes //use node
+                else
+                    chi = input_node.p_node.getChildren(); //use node's parent node
+
                 if(weaveTreeIsBusy())
                     setTimeout(function(){fetching_Children (i_node, getChildren);}, 300);
                 else{
@@ -64,14 +65,17 @@
 
                     for(var u =0; u < chi.length; u++){
                         var node_obj = {};
-                        node_obj.label = chi[u].getLabel();
+                        chi[u].getLabel()//TODO get this confirmed w/o this line column labels appear ...
 
                         if(weaveTreeIsBusy())
                             setTimeout(function(){fetching_Children (i_node, getChildren);}, 300);
                         //formats the children for displaying in the drop down selector
-                        node_obj.label = chi[u].getLabel();
-                        node_obj.tree_node = chi[u];
-                        node_obj.p_node = i_node.p_node;
+                        //node_obj.label = chi[u].getLabel();
+                        node_obj.w_node = chi[u];
+                        if(getChildren)
+                            node_obj.p_node = i_node.tree_node;//for children
+                        else
+                            node_obj.p_node = i_node.p_node;//for siblings
                         tempProvider[u] = node_obj;
                     }
                     $timeout(function(){
