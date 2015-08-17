@@ -1,5 +1,7 @@
 /**
  * Created by Shweta on 8/5/15.
+ * this controller will be one per pillContainer
+ * parent controller to all the individual pills
  */
 (function(){
 
@@ -19,7 +21,7 @@
         main.add_init_Crumb = add_init_Crumb;
         main.handle_Node_Selection = handle_Node_Selection;
 
-        main.weave_node = {};
+        main.weave_node = null;//is the last added node in the stack, needed for comparison
         main.crumbTrail = [];
         main.crumbLog = [];
 
@@ -34,14 +36,25 @@
 
         function manage_Crumbs(i_node){
             if(i_node){
-                var label = i_node.w_node.getLabel();
-                if($.inArray(label, main.crumbLog) == -1){//if it hasnt been added before
-                    main.crumbTrail.push(i_node);
-                    main.crumbLog.push(label);
-                }
-                else{
+                var label = i_node.label;
+                var parent_name = i_node.p_node.getLabel();
 
+                if(main.weave_node && parent_name == main.weave_node.p_node.getLabel()) {//the parents (they are siblings) are the same then do a replacement
+                    console.log("replacing");
                 }
+                else{//if parents are diff then addition or removal from the trail
+                    console.log("updating");
+                    if($.inArray(label, main.crumbLog) == -1){//if it hasnt been added before
+                        main.crumbTrail.push(i_node);
+                        main.crumbLog.push(label);
+                    }
+                    else{
+
+                    }
+                }
+
+
+                main.weave_node = i_node;//keeping track of latest chosen pill
             }
         }
 

@@ -68,8 +68,10 @@
 
                         if(weaveTreeIsBusy())
                             setTimeout(function(){fetching_Children (i_node, getChildren);}, 300);
+                        //formats the children for displaying in the drop down selector
                         node_obj.label = chi[u].getLabel();
-                        node_obj.node = chi[u];
+                        node_obj.tree_node = chi[u];
+                        node_obj.p_node = i_node.p_node;
                         tempProvider[u] = node_obj;
                     }
                     $timeout(function(){
