@@ -18,6 +18,7 @@
         that.display_Options = function(input_node, getChildren){
             var weaveTreeIsBusy = that.weave.evaluateExpression(null, '() => WeaveAPI.SessionManager.linkableObjectIsBusy(WEAVE_TREE_NODE_LOOKUP[0])');
             that.showUl = !that.showUl;
+            var chi;
 
             if(that.showUl){
                 if(getChildren){//when request is for children
@@ -29,6 +30,7 @@
                         that.node_options = [];//clear
                         usSpinnerService.spin('dataLoadSpinner');//start the spinner
 
+                        chi = input_node.tree_node.getChildren();//array of children nodes //use node
                         fetching_Children(input_node, getChildren);//use node
                     }
                 }
@@ -40,8 +42,9 @@
 
                     else{//make fresh request
                         that.node_options = [];//clear
-                        usSpinnerService.spin('dataLoadSpinner');//start the spinner
+                        usSpinnerService.spin('dataLoadSpinner');// start the spinner
 
+                        chi = input_node.p_node.getChildren(); //use node's parent node
                         fetching_Children(input_node, getChildren);
                     }
                 }
@@ -50,11 +53,6 @@
 
 
             function fetching_Children(i_node, getChildren){
-                var chi;
-                if(getChildren)
-                    chi= i_node.tree_node.getChildren();//array of children nodes //use node
-                else
-                    chi = i_node.p_node.getChildren(); //use node's parent node
                 if(weaveTreeIsBusy())
                     setTimeout(function(){fetching_Children (i_node, getChildren);}, 300);
                 else{
@@ -74,7 +72,10 @@
                     }
                     $timeout(function(){
                         that.node_options = tempProvider;
-                        input_node.current_childList = that.node_options;//set the provider
+                        if(getChildren)
+                            input_node.children = that.node_options;//set the provider
+                        else
+                            input_node.siblings = that.node_options;//set the provider
 
                         usSpinnerService.stop('dataLoadSpinner');//stops the spinner
                     }, 300);

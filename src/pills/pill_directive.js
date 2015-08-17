@@ -47,7 +47,6 @@ var yy;
         p_Ctrl.current_node.has_Children = p_Ctrl.input.isBranch();
         p_Ctrl.current_node.tree_node = p_Ctrl.input;
         p_Ctrl.current_node.p_node = p_Ctrl.pnode;
-        p_Ctrl.current_node.siblings = p_Ctrl.pnode.getChildren();//array of weave nodes
 
         yy = p_Ctrl.current_node;
 
