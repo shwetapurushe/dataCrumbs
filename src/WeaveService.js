@@ -51,36 +51,40 @@
             }//end of showUl boolean condition
 
 
-            function fetching_Children(i_node, getChildren){
+            function fetching_Children(i_node, getChildren) {
                 var chi;
-                if(getChildren)
+                if (getChildren)
                     chi = input_node.tree_node.getChildren();//array of children nodes //use node
                 else
                     chi = input_node.p_node.getChildren(); //use node's parent node
 
-                if(weaveTreeIsBusy())
-                    setTimeout(function(){fetching_Children (i_node, getChildren);}, 300);
-                else{
-                    var tempProvider =[];
+                if (weaveTreeIsBusy())
+                    setTimeout(function () {
+                        fetching_Children(i_node, getChildren);
+                    }, 300);
+                else {
+                    var tempProvider = [];
 
-                    for(var u =0; u < chi.length; u++){
+                    for (var u = 0; u < chi.length; u++) {
                         var node_obj = {};
-                        chi[u].getLabel()//TODO get this confirmed w/o this line column labels appear ...
+                        chi[u].getLabel();//TODO get this confirmed w/o this line column labels appear ...
 
-                        if(weaveTreeIsBusy())
-                            setTimeout(function(){fetching_Children (i_node, getChildren);}, 300);
+                        if (weaveTreeIsBusy())
+                            setTimeout(function () {
+                                fetching_Children(i_node, getChildren);
+                            }, 300);
                         //formats the children for displaying in the drop down selector
-                        //node_obj.label = chi[u].getLabel();
+                        node_obj.label = chi[u].getLabel();
                         node_obj.w_node = chi[u];
-                        if(getChildren)
+                        if (getChildren)
                             node_obj.p_node = i_node.tree_node;//for children
                         else
                             node_obj.p_node = i_node.p_node;//for siblings
                         tempProvider[u] = node_obj;
                     }
-                    $timeout(function(){
+                    $timeout(function () {
                         that.node_options = tempProvider;
-                        if(getChildren)
+                        if (getChildren)
                             input_node.children = that.node_options;//set the provider
                         else
                             input_node.siblings = that.node_options;//set the provider
@@ -89,7 +93,7 @@
                     }, 300);
 
                 }
-            };//end of fetching children
+            }//end of fetching children
         };
 
         /** requests the WeaveNodeTree hierarchy comprised of IWeaveTreeNode objects**/
