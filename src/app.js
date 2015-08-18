@@ -19,7 +19,6 @@
         main.request_WeaveTree = request_weaveTree;
         main.manage_Crumbs = manage_Crumbs;
         main.add_init_Crumb = add_init_Crumb;
-        main.handle_Node_Selection = handle_Node_Selection;
 
         //is the last added node in the stack, needed for comparison
         //structure of each node should be {w_node //actual node ; p_node //its parent node}
@@ -30,16 +29,10 @@
         //requesting the Weave root tree as soon as weave is ready
         main.request_WeaveTree();
 
-        function handle_Node_Selection (i_node){
-            //1.add the node pill
-            main.manage_Crumbs(i_node.node);
-            main.WeaveService.showUl = !main.WeaveService.showUl;//close options display
-        }
-
         function manage_Crumbs(i_node){
             if(i_node){
                 var label = i_node.w_node.getLabel();
-                var parent_name = i_node.p_node.getLabel();
+                var parent_name = i_node.w_node.parent.getLabel();
                 var previous_parent;
                 if (main.weave_node)
                     previous_parent = main.weave_node.p_node.getLabel();
@@ -70,8 +63,6 @@
 
                 var init_node = {};
                 init_node.w_node= ds[0];//starting with the WeaveDataSource Pill
-                init_node.p_node = main.WeaveService.weave_Tree;
-
                 main.manage_Crumbs(init_node);
                 scope.$apply();//because digest completes by the time the tree root is fetched
             }

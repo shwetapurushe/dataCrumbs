@@ -15,52 +15,31 @@
         that.node_options;
         that.showUl;
 
-        that.display_Options = function(input_node, getChildren){
+        that.display_Options = function(input_node){
             var weaveTreeIsBusy = that.weave.evaluateExpression(null, '() => WeaveAPI.SessionManager.linkableObjectIsBusy(WEAVE_TREE_NODE_LOOKUP[0])');
             that.showUl = !that.showUl;
 
             if(that.showUl){
-                if(getChildren){//when request is for children
-                    if(input_node.children && input_node.children.length){//use list if already there
-                        that.node_options = input_node.children;//set the provider
-                        console.log("using cached list");
-                    }
 
-                    else{//make fresh request
-                        that.node_options = [];//clear
-                        usSpinnerService.spin('dataLoadSpinner');// start the spinner
-                        fetching_Children(input_node, getChildren);//use node
-                        console.log("fetching new list");
-                    }
+                if(input_node.children && input_node.children.length){//use list if already there
+                    that.node_options = input_node.children;//set the provider
+                    console.log("using cached list");
                 }
 
-                else{//when request is for siblings
-                    if(input_node.siblings && input_node.siblings.length){//use if list is already there
-                        that.node_options = input_node.siblings;//set the provider
-                        console.log("using cached list");
-                    }
-
-                    else{//make fresh request
-                        that.node_options = [];//clear
-                        usSpinnerService.spin('dataLoadSpinner');// start the spinner
-                        fetching_Children(input_node, getChildren);
-                        console.log("fetching new list");
-                    }
+                else{//make fresh request
+                    that.node_options = [];//clear
+                    usSpinnerService.spin('dataLoadSpinner');// start the spinner
+                    fetching_Children(input_node);//use node
+                    console.log("fetching new list");
                 }
-
             }//end of showUl boolean condition
 
 
-            function fetching_Children(i_node, getChildren) {
-                var chi;
-                if (getChildren)
-                    chi = input_node.tree_node.getChildren();//array of children nodes //use node
-                else
-                    chi = input_node.p_node.getChildren(); //use node's parent node
-
+            function fetching_Children(i_node) {
+                var chi = i_node.tree_node.getChildren();
                 if (weaveTreeIsBusy())
                     setTimeout(function () {
-                        fetching_Children(i_node, getChildren);
+                        fetching_Children(i_node);
                     }, 300);
                 else {
                     var tempProvider = [];
@@ -71,23 +50,17 @@
 
                         if (weaveTreeIsBusy())
                             setTimeout(function () {
-                                fetching_Children(i_node, getChildren);
+                                fetching_Children(i_node);
                             }, 300);
                         //formats the children for displaying in the drop down selector
-                        node_obj.label = chi[u].getLabel();
+                        node_obj.label = chi[u].getLabel();//need this for filter of options to work
                         node_obj.w_node = chi[u];
-                        if (getChildren)
-                            node_obj.p_node = i_node.tree_node;//for children
-                        else
-                            node_obj.p_node = i_node.p_node;//for siblings
+
                         tempProvider[u] = node_obj;
                     }
                     $timeout(function () {
                         that.node_options = tempProvider;
-                        if (getChildren)
-                            input_node.children = that.node_options;//set the provider
-                        else
-                            input_node.siblings = that.node_options;//set the provider
+                        input_node.children = that.node_options;//set the provider
 
                         usSpinnerService.stop('dataLoadSpinner');//stops the spinner
                     }, 300);
