@@ -8,7 +8,7 @@
 <div class = "sp_pills">
 <!--CRUMB CONTAINER-->
     <div id="pillsContainer" ng-init = "main.add_init_Crumb()">
-            <selector-pills  ng-repeat = "a in main.crumbTrail" input = "a.w_node" pnode = "a.p_node"></selector-pills>
+            <selector-pills  ng-repeat = "a in main.crumbTrail" input = "a.w_node" pos= $last></selector-pills>
     </div>
 <!--LIST -->
     <div id ="optionList" ng-show="main.WeaveService.showUl">
