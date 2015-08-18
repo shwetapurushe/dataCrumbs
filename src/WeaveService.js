@@ -13,11 +13,11 @@
         that.weave;
         that.weave_Tree;
         that.node_options;
-        that.showUl;
+        that.showUl = true;
 
         that.display_Options = function(input_node, getChildren){
             var weaveTreeIsBusy = that.weave.evaluateExpression(null, '() => WeaveAPI.SessionManager.linkableObjectIsBusy(WEAVE_TREE_NODE_LOOKUP[0])');
-            that.showUl = !that.showUl;
+            that.showUl = true;
 
             if(that.showUl){
                 if(getChildren){//when request is for children

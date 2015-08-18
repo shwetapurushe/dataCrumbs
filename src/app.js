@@ -12,10 +12,7 @@
     crumbController.$inject = ['$scope', 'WeaveService'];
     function crumbController (scope, WeaveService){
         var main = this;
-
         main.WeaveService = WeaveService;
-        main.WeaveService.showUl = false;
-
         main.request_WeaveTree = request_weaveTree;
         main.manage_Crumbs = manage_Crumbs;
         main.add_init_Crumb = add_init_Crumb;
@@ -54,6 +51,9 @@
                 if(main.weave_node && main.weave_node.w_node.getLabel() != 'Data Sources')//we want to skip this level in the hierarchy
                     main.weave_node = null;
             }
+
+            main.WeaveService.showUl = !main.WeaveService.showUl;
+            console.log("main.showul", main.WeaveService.showUl);
         }
 
         //this function adds the data source initial pill, done only once as soon as weave loads
