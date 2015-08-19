@@ -8,4 +8,4 @@ The current version is designed only for Weave.
 
 See the crumb addition in progression. I will paste a demo link very soon.
 Simple demo pic.
-![Image of crumbs](https://github.com/shwetapurushe/dataCrumbs/css/img/Crumbs_Demo.png)
+![Image of crumbs](https://github.com/shwetapurushe/dataCrumbs/blob/master/css/img/Crumbs_Demo.png)
