@@ -23,28 +23,28 @@
                 if(getChildren){//when request is for children
                     if(input_node.children && input_node.children.length){//use list if already there
                         that.node_options = input_node.children;//set the provider
-                        console.log("using cached list");
+                        //console.log("using cached list");
                     }
 
                     else{//make fresh request
                         that.node_options = [];//clear
                         usSpinnerService.spin('dataLoadSpinner');// start the spinner
                         fetching_Children(input_node.tree_node, getChildren);//use node
-                        console.log("fetching new list");
+                        //console.log("fetching new list");
                     }
                 }
 
                 else{//when request is for siblings
                     if(input_node.siblings && input_node.siblings.length){//use if list is already there
                         that.node_options = input_node.siblings;//set the provider
-                        console.log("using cached list");
+                        //console.log("using cached list");
                     }
 
                     else{//make fresh request
                         that.node_options = [];//clear
                         usSpinnerService.spin('dataLoadSpinner');// start the spinner
                         fetching_Children(input_node.tree_node.parent, getChildren);//use its parent
-                        console.log("fetching new list");
+                        //console.log("fetching new list");
                     }
                 }
             }//end of showUl boolean condition

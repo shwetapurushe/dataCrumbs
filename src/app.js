@@ -31,30 +31,54 @@
             if(i_node.label != main.weave_node.label && main.weave_node) {//proceed only if it is new
                 /*2. check if it in the trail already */
                 if($.inArray(i_node.label, main.crumbLog) == -1) {//proceed if it is new
-                    /* for the very first crumb added*/
+                    /* for the very first crumb added; happens only once*/
                     if(!main.crumbTrail.length && !main.crumbLog.length){
                         console.log("first WeaveDataSource crumb added...");
                         main.crumbTrail.push(i_node);
                         main.crumbLog.push(i_node.label);
-                        main.WeaveService.showUl = false;
                     }
-                    /*3. check if previous crumb in trail is parent*/
-                   // if() {//proceed only if previous one in trail is parent
-                        //find its siblings index
-                        //remove sibling and is trail
-                        //add it
-                    //}
-                    //else//dont add it anywhere in trail
-                       // return;
+                    //remaining iterations
+                    else{
+                        /*3. check if previous crumb in trail is parent*/
+                        var p_name = i_node.w_node.parent.getLabel();
+                        var p_ind = main.crumbLog.indexOf(p_name);
+                        var trail_parent = main.crumbTrail[p_ind].label;
+
+                        if(p_name == trail_parent) {//proceed only if previous one in trail is parent
+                            /*4. check if a sibling is present after parent */
+                            if(main.crumbTrail[p_ind + 1]){
+                                var sib_node = main.crumbTrail[p_ind + 1];
+                                var sib_parent_name = sib_node.w_node.parent.getLabel();
+                                if(p_name == sib_parent_name){
+                                //if yes
+                                //remove sibling and is trail
+                                    main.crumbTrail.splice(p_ind+1, Number.MAX_VALUE);
+                                    main.crumbLog.splice(p_ind+1, Number.MAX_VALUE);
+                                //add it
+                                    main.crumbTrail.push(i_node);
+                                    main.crumbLog.push(i_node.label);
+                                    console.log("replacing sibling and updating ...");
+
+                                }
+                            }
+                            else{
+                                //if no then add
+                                console.log("new child added after parent...");
+                                main.crumbTrail.push(i_node);
+                                main.crumbLog.push(i_node.label);
+                            }
+                        }
+                        else{}//don't add it anywhere in trail
+                    }
                 }
-                else//if it already exists in the trail
-                    return;
+                else{}//if it already exists in the trail
             }
-            else// if it is old
-                return;
+            else{}// if it is old
             main.weave_node = i_node;
             if (main.weave_node && main.weave_node.w_node.getLabel() != 'Data Sources')//we want to skip this level in the hierarchy
                 main.weave_node = {};
+
+            main.WeaveService.showUl = false;
         }
 
         //this function adds the data source initial pill, done only once as soon as weave loads
