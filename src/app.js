@@ -17,9 +17,9 @@
         main.manage_Crumbs = manage_Crumbs;
         main.add_init_Crumb = add_init_Crumb;
 
-        //is the last added node in the stack, needed for comparison
-        //structure of each node should be {w_node //actual node ; p_node //its parent node}
-        main.weave_node = null;
+        //is the previously added node in the stack, needed for comparison
+        //structure of each node should be {w_node //actual node ; label: its label}
+        main.weave_node = {};
         main.crumbTrail = [];
         main.crumbLog = [];
 
@@ -27,33 +27,34 @@
         main.request_WeaveTree();
 
         function manage_Crumbs(i_node){
-            if(i_node){
-                var label = i_node.w_node.getLabel();
-                var parent_name = i_node.w_node.parent.getLabel();
-                var previous_parent;
-                if (main.weave_node)
-                    previous_parent = main.weave_node.p_node.getLabel();
-
-                if(main.weave_node && parent_name == previous_parent ) {//the parents (they are siblings) are the same then do a replacement
-                    console.log("replacing");
-                }
-                else{//if parents are diff then addition or removal from the trail
-                    console.log("updating");
-                    if($.inArray(label, main.crumbLog) == -1){//if it hasnt been added before
+            /*1. check if it is the previously added node*/
+            if(i_node.label != main.weave_node.label && main.weave_node) {//proceed only if it is new
+                /*2. check if it in the trail already */
+                if($.inArray(i_node.label, main.crumbLog) == -1) {//proceed if it is new
+                    /* for the very first crumb added*/
+                    if(!main.crumbTrail.length && !main.crumbLog.length){
+                        console.log("first WeaveDataSource crumb added...");
                         main.crumbTrail.push(i_node);
-                        main.crumbLog.push(label);
+                        main.crumbLog.push(i_node.label);
+                        main.WeaveService.showUl = false;
                     }
-                    else{
-
-                    }
+                    /*3. check if previous crumb in trail is parent*/
+                   // if() {//proceed only if previous one in trail is parent
+                        //find its siblings index
+                        //remove sibling and is trail
+                        //add it
+                    //}
+                    //else//dont add it anywhere in trail
+                       // return;
                 }
-                main.weave_node = i_node;//keeping track of latest chosen pill
-                if(main.weave_node && main.weave_node.w_node.getLabel() != 'Data Sources')//we want to skip this level in the hierarchy
-                    main.weave_node = null;
+                else//if it already exists in the trail
+                    return;
             }
-
-            main.WeaveService.showUl = !main.WeaveService.showUl;
-            console.log("main.showul", main.WeaveService.showUl);
+            else// if it is old
+                return;
+            main.weave_node = i_node;
+            if (main.weave_node && main.weave_node.w_node.getLabel() != 'Data Sources')//we want to skip this level in the hierarchy
+                main.weave_node = {};
         }
 
         //this function adds the data source initial pill, done only once as soon as weave loads
@@ -62,6 +63,7 @@
                 var ds = main.WeaveService.weave_Tree.getChildren();
 
                 var init_node = {};
+                init_node.label = ds[0].getLabel();
                 init_node.w_node= ds[0];//starting with the WeaveDataSource Pill
                 main.manage_Crumbs(init_node);
                 scope.$apply();//because digest completes by the time the tree root is fetched
@@ -73,11 +75,6 @@
         function request_weaveTree (){
             main.WeaveService.request_WeaveTree();
         }
-
-        //works with ng-repeat
-        main.logs = [{name : 'a', kite: 99}, {name : 'shweta', kite: 80}];
-        main.list = ['asinine', 'about', 'jumbla', 'love', 'sssshweta', 'slop'];
-
     }
 
 })();
