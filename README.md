@@ -5,8 +5,8 @@ This component is an alternative JS GUI to the Attribute selector in [Weave] (ht
 It allows navigation down a hierarchy, for the selection of data columns.
 
 
-* Each crumb represent one level of the hierarchy and can be chosen from a drop down selector.
-* The arrow glyph indicates if further navigation of the hierarchy is possible.
+* Each crumb represents one level of the hierarchy and can be chosen from a drop down selector.
+* The arrow glyph indicates whether further navigation of the hierarchy is possible.
 * If a crumb is clicked, the drop down selector is populated with a crumb's respective siblings.
 * If the arrow is clicked , the drop down selector is populated with a crumb's respective children.
 
