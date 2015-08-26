@@ -1,0 +1,90 @@
+/* this class if for the parent div that contains the entire component*/
+.sp_pills{
+    min-width: 10%;
+    float:left
+}
+
+#flashContent{
+    display: inline-block;
+}
+
+.selector-components {
+    display: inline-block;
+    padding : 5px 5px 5px 5px;
+    float:left;
+    margin: 0 0 0 3px;
+    font-size: 14px;
+    /*border: solid  1px #c8c2c4;*/
+    /*border-bottom-left-radius: 7px;*/
+    /*border-top-left-radius: 7px;*/
+}
+
+selector-pills :hover {
+    background-color: skyblue;
+}
+
+/*.onHover {*/
+    /*background-color: skyblue;*/
+/*}*/
+
+#pillsContainer{
+    border: solid 2px #619BD4;
+    border-radius : 7px;
+    /*display: inline-block;*/
+    overflow-x : auto;
+    width: 400px;
+    min-height: 25px;
+    padding : 3px 3px 3px 3px;
+    margin : 5px 5px 0 5px;
+}
+
+#arrow {
+    display: inline-block;
+    padding : 5px 5px 5px 0;
+    float:left;
+    /*border: solid  1px #c8c2c4;*/
+    /*border-top-right-radius : 7px;*/
+    /*border-bottom-right-radius: 7px;*/
+}
+
+/* everything to do with the drop down options selector*/
+#optionList{
+    border: solid 2px #619BD4;
+    max-height : 500px;
+    border-radius : 7px;
+    padding : 5px 5px 5px 5px;
+    margin : 0 5px 5px 5px;
+    overflow-y : scroll;
+}
+ul{
+    list-style-type: none;
+    margin: 5px;
+    /*line-height: 100%;*/
+    padding:0;
+}
+
+ul li{
+    font-size: 15px;
+    padding:5px;
+}
+
+li:hover{
+    cursor:pointer;
+    background-color: rgba(12, 99, 207, 0.69);
+    color: #FAFFFE;
+}
+
+.searchC{
+    width : 95%;
+    padding : 5px 5px 5px 5px;
+    border-radius : 7px;
+    border: solid 2px #c8c2c4;
+    min-height: 20px;
+}
+
+#searchFilter{
+    width : 90%;
+    padding : 5px 5px 5px 5px;
+    min-height: 15px;
+    border: none;
+}
