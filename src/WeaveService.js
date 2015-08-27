@@ -17,7 +17,7 @@
 
         /*object of script input options
         * keys are the script input names
-        * values are the trail (array of pills)*/
+        * values are the trail (array of crumbs)*/
 
         that.display_Options = function(input_node, getChildren){
             var weaveTreeIsBusy = that.weave.evaluateExpression(null, '() => WeaveAPI.SessionManager.linkableObjectIsBusy(WEAVE_TREE_NODE_LOOKUP[0])');

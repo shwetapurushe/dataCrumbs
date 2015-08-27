@@ -12,7 +12,7 @@ var tt;
     function selectorPillComponent () {
         return {
             restrict: 'E',
-            templateUrl:"src/pills/crumbPartial.html" ,
+            templateUrl:"src/crumbs/crumbPartial.html" ,
             controller: sPillController,
             controllerAs: 'p_Ctrl',
             bindToController: true,
@@ -92,7 +92,7 @@ var tt;
             if (p_Ctrl.weave_node && p_Ctrl.weave_node.w_node.getLabel() != 'Data Sources')//we want to skip this level in the hierarchy
                 p_Ctrl.weave_node = {};
 
-            p_Ctrl.WeaveService.showUl = false;
+            p_Ctrl.toggleList = false;
         }
 
 
