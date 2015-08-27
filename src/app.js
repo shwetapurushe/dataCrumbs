@@ -15,6 +15,8 @@
         main.WeaveService = WeaveService;
 
         main.WeaveService.request_WeaveTree();
+
+        main.scriptOptions = ["a", "b"];
     }
 
 })();
