@@ -1,14 +1,24 @@
 /* this class if for the parent div that contains the entire component*/
 .sp_pills{
-    min-width: 10%;
-    float:left
+    min-width: 30%;
+    width: 300px;
+    min-height: 250px;
+    float:left;
 }
 
 #flashContent{
     display: inline-block;
 }
 
-.selector-components {
+.arrow {
+    display: inline-block;
+    padding : 5px 5px 5px 3px;
+    float:left;
+    /*border: solid  1px #c8c2c4;*/
+    /*border-top-right-radius : 7px;*/
+    /*border-bottom-right-radius: 7px;*/
+}
+.crumbs {
     display: inline-block;
     padding : 5px 5px 5px 5px;
     float:left;
@@ -19,15 +29,21 @@
     /*border-top-left-radius: 7px;*/
 }
 
-selector-pills :hover {
-    background-color: skyblue;
-}
-
-/*.onHover {*/
+/*crumbElem :hover {*/
     /*background-color: skyblue;*/
 /*}*/
 
-#pillsContainer{
+.onHover {
+    background-color: #8edbff;
+}
+
+.onArrow{
+    background-color: #ff69fc;
+    border: solid  1px #c8c2c4;
+    border-radius: 15px;
+}
+
+#crumbsContainer{
     border: solid 2px #619BD4;
     border-radius : 7px;
     /*display: inline-block;*/
@@ -36,15 +52,6 @@ selector-pills :hover {
     min-height: 25px;
     padding : 3px 3px 3px 3px;
     margin : 5px 5px 0 5px;
-}
-
-#arrow {
-    display: inline-block;
-    padding : 5px 5px 5px 0;
-    float:left;
-    /*border: solid  1px #c8c2c4;*/
-    /*border-top-right-radius : 7px;*/
-    /*border-bottom-right-radius: 7px;*/
 }
 
 /* everything to do with the drop down options selector*/

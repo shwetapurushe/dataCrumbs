@@ -15,6 +15,10 @@
         that.node_options;
         that.showUl = true;
 
+        /*object of script input options
+        * keys are the script input names
+        * values are the trail (array of pills)*/
+
         that.display_Options = function(input_node, getChildren){
             var weaveTreeIsBusy = that.weave.evaluateExpression(null, '() => WeaveAPI.SessionManager.linkableObjectIsBusy(WEAVE_TREE_NODE_LOOKUP[0])');
             that.showUl = true;
@@ -29,7 +33,7 @@
                     else{//make fresh request
                         that.node_options = [];//clear
                         usSpinnerService.spin('dataLoadSpinner');// start the spinner
-                        fetching_Children(input_node.tree_node, getChildren);//use node
+                        fetching_Children(input_node.w_node, getChildren);//use node
                         //console.log("fetching new list");
                     }
                 }
@@ -43,7 +47,7 @@
                     else{//make fresh request
                         that.node_options = [];//clear
                         usSpinnerService.spin('dataLoadSpinner');// start the spinner
-                        fetching_Children(input_node.tree_node.parent, getChildren);//use its parent
+                        fetching_Children(input_node.w_node.parent, getChildren);//use its parent
                         //console.log("fetching new list");
                     }
                 }

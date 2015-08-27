@@ -6,21 +6,8 @@
 
 <!--ONE PER SCRIPT OPTION-->
 <div class = "sp_pills">
-<!--CRUMB CONTAINER-->
-    <div id="pillsContainer" ng-init = "main.add_init_Crumb()">
-            <selector-pills  ng-repeat = "a in main.crumbTrail" input = "a.w_node" pos= $last></selector-pills>
-    </div>
-<!--LIST -->
-    <div id ="optionList" ng-show="main.WeaveService.showUl">
-        <div class="searchC">
-            <input id = "searchFilter" ng-model = "searchText"/>
-            <i class="fa fa-search" style = "padding-left: 5px"></i>
-        </div>
-        <ul ng-repeat="opt in main.WeaveService.node_options| filter:searchText"><!--dynamically populated depending on the node selected-->
-            <li ng-click = "main.manage_Crumbs(opt)">{{opt.label}}</li>
-        </ul>
-    </div>
-
+    <!--CRUMB CONTAINER-->
+   <crumb-Selector></crumb-Selector>
 </div>
 
 <!-- WEAVE -->
@@ -30,9 +17,10 @@
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/angular-spinner/angular-spinner.js"></script>
 <script src="bower_components/spin.js/spin.js"></script>
+<script src="bower_components/lodash/lodash.min.js"></script>
 <script src="src/app.js"></script>
 <script src="src/WeaveService.js"></script>
-<script src="src/pills/pill_directive.js"></script>
+<script src="src/pills/crumb_directive.js"></script>
 <script type="text/javascript" src="src/swfobject.js"></script>
 
 <script type="text/javascript">
