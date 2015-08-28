@@ -87,8 +87,6 @@
             }
             else{}// if it is old
             p_Ctrl.weave_node = i_node;
-            if (p_Ctrl.weave_node && p_Ctrl.weave_node.w_node.getLabel() != 'Data Sources')//we want to skip this level in the hierarchy
-                p_Ctrl.weave_node = {};
 
             //p_Ctrl.toggleList = false;
             if(i_node.w_node.isBranch()){
