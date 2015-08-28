@@ -90,8 +90,12 @@
 
             //p_Ctrl.toggleList = false;
             if(i_node.w_node.isBranch()){
-                p_Ctrl.display_Children(i_node);
-                p_Ctrl.showList = true;
+                if(i_node.label == 'WeaveDataSource')
+                    p_Ctrl.showList = false;
+                else{
+                    p_Ctrl.display_Children(i_node);
+                    p_Ctrl.showList = true;
+                }
             }
             else
                 p_Ctrl.showList = false;
