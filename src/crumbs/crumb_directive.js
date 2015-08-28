@@ -2,7 +2,6 @@
  * Created by Shweta on 8/5/15.
  * this component represents one ui crumb in the hierarchy
  * */
-var tt;
 (function (){
     //angular.module('crumbs.selectorPills', []);
 
@@ -31,14 +30,13 @@ var tt;
         p_Ctrl.add_init_Crumb = add_init_Crumb;
         p_Ctrl.manage_Crumbs = manage_Crumbs;
 
-        p_Ctrl.toggleList = false;
+        //p_Ctrl.toggleList = false;
 
         //is the previously added node in the stack, needed for comparison
         //structure of each node should be {w_node //actual node ; label: its label}
         p_Ctrl.weave_node = {};
         p_Ctrl.crumbTrail = [];
         p_Ctrl.crumbLog = [];
-        tt = p_Ctrl.crumbTrail;
 
         function manage_Crumbs(i_node){
             /*1. check if it is the previously added node*/
@@ -92,7 +90,9 @@ var tt;
             if (p_Ctrl.weave_node && p_Ctrl.weave_node.w_node.getLabel() != 'Data Sources')//we want to skip this level in the hierarchy
                 p_Ctrl.weave_node = {};
 
-            p_Ctrl.toggleList = false;
+            //p_Ctrl.toggleList = false;
+            if(i_node.w_node.isBranch())
+                p_Ctrl.display_Children(i_node);
         }
 
 
@@ -112,12 +112,12 @@ var tt;
         }
 
         function display_Children(i_node){
-            p_Ctrl.toggleList = true;
+           // p_Ctrl.toggleList = true;
             p_Ctrl.WeaveService.display_Options(i_node, true);//using the actual node
         }
 
         function display_Siblings(i_node){
-            p_Ctrl.toggleList = true;
+           // p_Ctrl.toggleList = true;
             p_Ctrl.WeaveService.display_Options(i_node)
         }
     }

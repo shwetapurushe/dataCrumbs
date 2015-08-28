@@ -13,7 +13,6 @@
         that.weave;
         that.weave_Tree;
         that.node_options;
-        that.showUl = true;
 
         /*object of script input options
         * keys are the script input names
@@ -21,37 +20,36 @@
 
         that.display_Options = function(input_node, getChildren){
             var weaveTreeIsBusy = that.weave.evaluateExpression(null, '() => WeaveAPI.SessionManager.linkableObjectIsBusy(WEAVE_TREE_NODE_LOOKUP[0])');
-            that.showUl = true;
 
-            if(that.showUl){
-                if(getChildren){//when request is for children
-                    if(input_node.children && input_node.children.length){//use list if already there
-                        that.node_options = input_node.children;//set the provider
-                        //console.log("using cached list");
-                    }
 
-                    else{//make fresh request
-                        that.node_options = [];//clear
-                        usSpinnerService.spin('dataLoadSpinner');// start the spinner
-                        fetching_Children(input_node.w_node, getChildren);//use node
-                        //console.log("fetching new list");
-                    }
+            if(getChildren){//when request is for children
+                if(input_node.children && input_node.children.length){//use list if already there
+                    that.node_options = input_node.children;//set the provider
+                    //console.log("using cached list");
                 }
 
-                else{//when request is for siblings
-                    if(input_node.siblings && input_node.siblings.length){//use if list is already there
-                        that.node_options = input_node.siblings;//set the provider
-                        //console.log("using cached list");
-                    }
-
-                    else{//make fresh request
-                        that.node_options = [];//clear
-                        usSpinnerService.spin('dataLoadSpinner');// start the spinner
-                        fetching_Children(input_node.w_node.parent, getChildren);//use its parent
-                        //console.log("fetching new list");
-                    }
+                else{//make fresh request
+                    that.node_options = [];//clear
+                    usSpinnerService.spin('dataLoadSpinner');// start the spinner
+                    fetching_Children(input_node.w_node, getChildren);//use node
+                    //console.log("fetching new list");
                 }
-            }//end of showUl boolean condition
+            }
+
+            else{//when request is for siblings
+                if(input_node.siblings && input_node.siblings.length){//use if list is already there
+                    that.node_options = input_node.siblings;//set the provider
+                    //console.log("using cached list");
+                }
+
+                else{//make fresh request
+                    that.node_options = [];//clear
+                    usSpinnerService.spin('dataLoadSpinner');// start the spinner
+                    fetching_Children(input_node.w_node.parent, getChildren);//use its parent
+                    //console.log("fetching new list");
+                }
+            }
+
 
 
             function fetching_Children(i_node, getChildren) {
