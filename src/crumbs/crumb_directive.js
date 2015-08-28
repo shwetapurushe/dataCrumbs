@@ -30,7 +30,7 @@
         p_Ctrl.add_init_Crumb = add_init_Crumb;
         p_Ctrl.manage_Crumbs = manage_Crumbs;
 
-        //p_Ctrl.toggleList = false;
+        p_Ctrl.showList = false;
 
         //is the previously added node in the stack, needed for comparison
         //structure of each node should be {w_node //actual node ; label: its label}
@@ -91,8 +91,12 @@
                 p_Ctrl.weave_node = {};
 
             //p_Ctrl.toggleList = false;
-            if(i_node.w_node.isBranch())
+            if(i_node.w_node.isBranch()){
                 p_Ctrl.display_Children(i_node);
+                p_Ctrl.showList = true;
+            }
+            else
+                p_Ctrl.showList = false;
         }
 
 
@@ -112,12 +116,12 @@
         }
 
         function display_Children(i_node){
-           // p_Ctrl.toggleList = true;
+            p_Ctrl.showList = true;
             p_Ctrl.WeaveService.display_Options(i_node, true);//using the actual node
         }
 
         function display_Siblings(i_node){
-           // p_Ctrl.toggleList = true;
+            p_Ctrl.showList = true;
             p_Ctrl.WeaveService.display_Options(i_node)
         }
     }
