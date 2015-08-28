@@ -3,6 +3,7 @@
  * this controller will be one per pillContainer
  * parent controller to all the individual pills
  */
+var tt;
 (function(){
 
     angular.module('crumbs', ['angularSpinner']);
@@ -16,7 +17,8 @@
 
         main.WeaveService.request_WeaveTree();
 
-        main.scriptOptions = ["a"];
+        main.scriptOptions = ["a", "v", "c"];
+
     }
 
 })();

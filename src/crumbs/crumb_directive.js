@@ -38,6 +38,7 @@
         p_Ctrl.crumbTrail = [];
         p_Ctrl.crumbLog = [];
 
+
         function manage_Crumbs(i_node){
             /*1. check if it is the previously added node*/
             if(i_node.label != p_Ctrl.weave_node.label && p_Ctrl.weave_node) {//proceed only if it is new
@@ -45,7 +46,7 @@
                 if($.inArray(i_node.label, p_Ctrl.crumbLog) == -1) {//proceed if it is new
                     /* for the very first crumb added; happens only once*/
                     if(!p_Ctrl.crumbTrail.length && !p_Ctrl.crumbLog.length){
-                        console.log("first WeaveDataSource crumb added...");
+                       // console.log("first WeaveDataSource crumb added...");
                         p_Ctrl.crumbTrail.push(i_node);
                         p_Ctrl.crumbLog.push(i_node.label);
                     }
@@ -69,13 +70,13 @@
                                     //add it
                                     p_Ctrl.crumbTrail.push(i_node);
                                     p_Ctrl.crumbLog.push(i_node.label);
-                                    console.log("replacing sibling and updating ...");
+                                    //console.log("replacing sibling and updating ...");
 
                                 }
                             }
                             else{
                                 //if no then add
-                                console.log("new child added after parent...");
+                                //console.log("new child added after parent...");
                                 p_Ctrl.crumbTrail.push(i_node);
                                 p_Ctrl.crumbLog.push(i_node.label);
                             }
