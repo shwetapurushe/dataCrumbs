@@ -12,18 +12,30 @@
 <!--SPINNER-->
 <span us-spinner spinner-key = "dataLoadSpinner"></span>
 
-<div class = 'dataNav'>
-    <!--ONE PER SCRIPT OPTION-->
-    <div class = "sp_pills" ng-repeat="i in main.scriptOptions">
-        <!--CRUMB CONTAINER-->
-        <crumb-Selector></crumb-Selector>
-    </div>
+
+
+<div style = "border: 1px solid black;" ng-click="main.change()"
+     contentEditable
+     strip-br="true" required
+     ng-model="main.userContent">{{main.userContent}}
 </div>
 
-<!-- WEAVE -->
-<div id="flashContent"></div>
+<textarea ng-model="main.userContent" aria-label="Dynamic textarea"></textarea>
+
+
+<!--<div class = 'dataNav'>-->
+    <!--&lt;!&ndash;ONE PER SCRIPT OPTION&ndash;&gt;-->
+    <!--<div class = "sp_pills" ng-repeat="i in main.scriptOptions">-->
+        <!--&lt;!&ndash;CRUMB CONTAINER&ndash;&gt;-->
+        <!--<crumb-Selector></crumb-Selector>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; WEAVE &ndash;&gt;-->
+<!--<div id="flashContent"></div>-->
 
 <script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/angular-spinner/angular-spinner.js"></script>
 <script src="bower_components/spin.js/spin.js"></script>
